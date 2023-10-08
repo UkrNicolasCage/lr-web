@@ -1,0 +1,37 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["metrics"]
+  binaryTargets   = ["native", "linux-musl-openssl-3.0.x", "darwin", "darwin-arm64"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String        @id @default(uuid())
+  createdAt        DateTime      @default(now())
+  email            String      @unique
+  password         String
+}
+
+model Station {
+  id               String        @id @default(uuid()) 
+  createdAt        DateTime      @default(now())
+  name             String
+  startShedules    Schedule[]     @relation("startStation")
+  endShedules      Schedule[]     @relation("endStation")
+}
+
+model Schedule {
+  id               String        @id @default(uuid())
+  createdAt        DateTime      @default(now())
+  name             String
+  startStationId   String
+  endStationId     String
+  start            Station       @relation("startStation", fields: [startStationId], references: [id])
+  end              Station       @relation("endStation", fields: [endStationId], references: [id])
+  dispatch         DateTime
+  arrival          DateTime
+}

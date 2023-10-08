@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+		<meta name="description" content="Effortlessly plan your journeys with our train schedule app, ensuring timely travels and seamless connections." />
+		<meta property="og:title" content="Schedule" />
+		<meta property="og:description" content="Effortlessly plan your journeys with our train schedule app, ensuring timely travels and seamless connections." />
+		<meta property="og:locale" content="en_EN" />
+		<meta property="og:type" content="website" />
+
+		<title>Schedule</title>
+  </head>
+
+  <script type="module">
+    import process from "process"
+    import { Buffer } from "buffer"
+    window.global = window
+    window.Buffer = Buffer
+    window.process = process
+  </script>
+  
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
