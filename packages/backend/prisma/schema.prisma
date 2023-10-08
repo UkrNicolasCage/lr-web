@@ -9,29 +9,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Student {
   id               String        @id @default(uuid())
   createdAt        DateTime      @default(now())
-  email            String      @unique
+  email            String        @unique
   password         String
+  role             String        @default("USER")
+  gender           String
+  firstName        String
+  lastName         String
+  groupId          Int
+  group            Group         @relation(fields: [groupId], references: [id])
+  birthday         DateTime
 }
 
-model Station {
-  id               String        @id @default(uuid()) 
+model Group {
+  id               Int           @id @default(autoincrement())
   createdAt        DateTime      @default(now())
   name             String
-  startShedules    Schedule[]     @relation("startStation")
-  endShedules      Schedule[]     @relation("endStation")
+  students         Student[]
+  leaderId         String?
 }
 
-model Schedule {
-  id               String        @id @default(uuid())
-  createdAt        DateTime      @default(now())
-  name             String
-  startStationId   String
-  endStationId     String
-  start            Station       @relation("startStation", fields: [startStationId], references: [id])
-  end              Station       @relation("endStation", fields: [endStationId], references: [id])
-  dispatch         DateTime
-  arrival          DateTime
-}
+
