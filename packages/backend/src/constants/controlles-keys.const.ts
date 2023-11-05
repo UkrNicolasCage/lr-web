@@ -11,12 +11,6 @@ export const AUTH_KEYS = Object.freeze({
     LOGOUT: '/logout',
 })
 
-export const STATIONS_KEYS = Object.freeze({
-    STATIONS: 'stations',
-    ONE: '/:id',
-})
-
-export const SCHEDULE_KEYS = Object.freeze({
-    SCHEDULES: 'schedules',
-    ONE: '/:id',
+export const GROUP_KEYS = Object.freeze({
+    GROUPS: 'groups',
 })

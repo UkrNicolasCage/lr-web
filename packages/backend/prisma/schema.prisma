@@ -9,7 +9,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Student {
+model User {
   id               String        @id @default(uuid())
   createdAt        DateTime      @default(now())
   email            String        @unique
@@ -18,17 +18,18 @@ model Student {
   gender           String
   firstName        String
   lastName         String
-  groupId          Int
-  group            Group         @relation(fields: [groupId], references: [id])
+  groupId          String?
+  group            Group?         @relation(fields: [groupId], references: [id])
   birthday         DateTime
+  privilege        Boolean      @default(false)
 }
 
 model Group {
-  id               Int           @id @default(autoincrement())
-  createdAt        DateTime      @default(now())
-  name             String
-  students         Student[]
-  leaderId         String?
+  id        String     @id @default(uuid())
+  createdAt DateTime   @default(now())
+  name      String
+  leaderId  String?
+  users     User[] 
 }
 
 

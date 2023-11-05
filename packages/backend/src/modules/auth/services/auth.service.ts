@@ -17,34 +17,6 @@ export class AuthService {
         private readonly passportService: PassportService,
     ) {}
 
-    public async signUp({ email, password}: ICreateUser, res: Response): Promise<Partial<User>> {
-        const oldUser = await this.userService.getUser({
-            email,
-        })
-
-        if (oldUser) {
-            throw new HttpException(
-                {
-                    email: ERROR_MESSAGES.USER_ALREADY_EXISTS,
-                },
-                HttpStatus.BAD_REQUEST,
-            )
-        }
-
-        const hash = await bcrypt.hash(password, 10)
-
-        const newUser = await this.userService.createUser({
-            email,
-            password: hash,
-        })
-
-        this.jwtService.generateToken(newUser, res)
-
-        const { password: deletePswd, ...returnUser} = newUser
-
-        return returnUser
-    }
-
     public async signIn({ email, password }: ICreateUser, res: Response): Promise<Partial<User>> {
         const user = await this.userService.getUser({
             email,

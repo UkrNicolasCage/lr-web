@@ -3,7 +3,6 @@ import type { Request } from 'express'
 export interface ICookieParse {
     id: string
     role: string
-    stripeCustomerId: string
 }
 
 export interface IAuthenticatedRequest extends Request {

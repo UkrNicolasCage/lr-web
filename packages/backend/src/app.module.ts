@@ -6,8 +6,8 @@ import { JwtModule, } from '@nestjs/jwt'
 import { ScheduleModule } from '@nestjs/schedule'
 
 import { AuthModule, } from './modules/auth/auth.module'
-import { StationModule } from './modules/station/station.module'
-import { ScheduleModule as TrainSchedule } from './modules/schedule/schedule.module'
+import { UserModule } from './modules/user/user.module'
+import { GroupModule } from './modules/group/group.module'
 
 @Module({
     imports: [
@@ -35,8 +35,8 @@ import { ScheduleModule as TrainSchedule } from './modules/schedule/schedule.mod
         },),
 
         AuthModule,
-        StationModule,
-        TrainSchedule,
+        UserModule,
+        GroupModule
 
     ],
 },)

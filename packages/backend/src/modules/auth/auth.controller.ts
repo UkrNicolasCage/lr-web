@@ -20,13 +20,6 @@ export class AuthController {
         res.send(await this.authService.checkJWT(req))
     }
 
-    @Post(AUTH_KEYS.SIGNUP)
-    public async signUp(@Body() {email, password}: AuthCredsDto, @Res() res: Response): Promise<void> {
-        res.send(await this.authService.signUp({
-            email, password
-        }, res))
-    }
-
     @Post(AUTH_KEYS.SIGNIN)
     public async signIn(@Body() {email, password}: AuthCredsDto, @Res() res: Response): Promise<void> {
         res.send(await this.authService.signIn({

@@ -1,5 +1,0 @@
-export * from './add-modal.component'
-export * from './schedules-table.component'
-export * from './search.component'
-export * from './pagination.component'
-export * from './sort-buttons.component'

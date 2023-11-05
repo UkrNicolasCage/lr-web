@@ -56,7 +56,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') implements CanActivate {
 
                 const dc = this.jwtService.decode(String(at)) as Record<string, string>
 
-                const { jwt, jwtRefresh } = JwtStrategy.generateTokens(d.id, dc['role']!, d.stripeCustomerId)
+                const { jwt, jwtRefresh } = JwtStrategy.generateTokens(d.id, dc['role'], d.stripeCustomerId)
 
                 JwtStrategy.setAuthCookies(res, jwt, jwtRefresh)
                 return this.validateRequest(req.cookies.jwt, req)

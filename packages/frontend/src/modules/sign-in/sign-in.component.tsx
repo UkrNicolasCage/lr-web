@@ -36,7 +36,6 @@ export const SignIn: React.FC = () => {
           </Field>
         })}
         <Button text='Sign In' type='submit' disabled={disabled}/>
-        <AuthLink to={`/${RouterKeys.SIGN_UP}`} text='Are you new here? Sign up!' />
       </Form>
     </div>
   )
