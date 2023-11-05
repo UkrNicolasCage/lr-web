@@ -6,10 +6,8 @@ import { Response } from 'express'
 import { USER_KEYS } from '../../constants/controlles-keys.const'
 import { IAuthenticatedRequest } from '../../typings/auth.types'
 import { JwtAuthGuard } from '../../guards/auth.guard'
+import { CreateUserDto, UserDto } from './dto'
 import { UserService } from './user.service'
-import { UserDto} from './dto/user-dto'
-import { CreateGroupDto } from '../group/dto'
-import { CreateUserDto } from './dto'
 
 @UseGuards(JwtAuthGuard)
 @ApiTags(USER_KEYS.USERS)
@@ -19,6 +17,7 @@ export class UserController {
 
     @Get('')
     public async getUser(@Req() req: IAuthenticatedRequest, @Res() res: Response): Promise<void> {
+        console.log('req.user', req)
         res.send(
             await this.userService.getUser({
                 id: req.user.id,

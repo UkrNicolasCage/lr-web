@@ -45,7 +45,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     public static generateTokens(
         id: string,
         role?: string,
-        stripeCustomerId?: string,
     ): {
         jwt: string
         jwtRefresh: string
@@ -56,7 +55,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
             {
                 id,
                 role,
-                stripeCustomerId,
             },
             {
                 expiresIn: 60 * 10,

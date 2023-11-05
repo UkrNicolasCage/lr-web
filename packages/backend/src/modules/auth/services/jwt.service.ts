@@ -11,7 +11,7 @@ export class JWTService {
     ) {}
 
     public generateToken(user: User, res: Response): void {
-        const { jwt, jwtRefresh } = JwtStrategy.generateTokens(user.id,)
+        const { jwt, jwtRefresh } = JwtStrategy.generateTokens(user.id, user.role)
         if (jwt && jwtRefresh) {
             JwtStrategy.setAuthCookies(res, jwt, jwtRefresh)
         }

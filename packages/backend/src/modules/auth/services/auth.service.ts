@@ -21,7 +21,6 @@ export class AuthService {
         const user = await this.userService.getUser({
             email,
         })
-
         if (!user) {
             throw new HttpException(
                 {
